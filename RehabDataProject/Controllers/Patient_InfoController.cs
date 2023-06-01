@@ -17,6 +17,12 @@ namespace RehabDataProject.Controllers
             IEnumerable<Patient_Info> objPatientsList = _db.Patients_Info;
             return View(objPatientsList);
         }
+        //For Old Patient Data
+        public IActionResult IndexPatientsOld()
+        {
+            IEnumerable<PatientOld> objOldPatientsList = _db.PatientsOld;
+            return View(objOldPatientsList);
+        }
         //GET
         public IActionResult Create()
         {
@@ -30,6 +36,17 @@ namespace RehabDataProject.Controllers
         {
             if (ModelState.IsValid)
             {
+                var patientOld = new PatientOld
+                {
+
+                    Name = obj.Name,
+                    KneeROM = obj.KneeROM,
+                    KneeStrength = obj.KneeStrength,
+                    LowerbackExtROM = obj.LowerbackExtROM,
+                    LowerBackFlexionROM = obj.LowerBackFlexionROM,
+                    PainFreeWeightLifted = obj.PainFreeWeightLifted,
+                };
+                _db.PatientsOld.Add(patientOld);
                 _db.Patients_Info.Add(obj);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
@@ -51,14 +68,38 @@ namespace RehabDataProject.Controllers
             }
 			return View(patientFromDb);
 		}
-		//POST
-		[HttpPost]
+        //For Old Patient LIst
+        public IActionResult IndexOldList(int? id)
+        {
+            var patientInfo = _db.Patients_Info.Find(id);
+            if (patientInfo == null)
+            {
+                return NotFound();
+            }
+            var name = patientInfo.Name;
+            var oldPatients = _db.PatientsOld.Where(p => p.Name == name).ToList();
+            return View(oldPatients);
+
+        }
+        //POST
+        [HttpPost]
 		[ValidateAntiForgeryToken]
 		public IActionResult Edit(Patient_Info obj)
 		{
 			if (ModelState.IsValid)
 			{
-				_db.Patients_Info.Update(obj);
+                var patientOld = new PatientOld
+                {
+                    
+                    Name = obj.Name,
+                    KneeROM = obj.KneeROM,
+                    KneeStrength = obj.KneeStrength,
+                    LowerbackExtROM = obj.LowerbackExtROM,
+                    LowerBackFlexionROM = obj.LowerBackFlexionROM,
+                    PainFreeWeightLifted = obj.PainFreeWeightLifted,
+                };
+                _db.PatientsOld.Add(patientOld);
+				_db.Patients_Info.Update(obj);               
 				_db.SaveChanges();
 				return RedirectToAction("Index");
 			}

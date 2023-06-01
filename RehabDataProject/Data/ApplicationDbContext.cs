@@ -10,5 +10,6 @@ namespace RehabDataProject.Data
             
         }
         public DbSet<Patient_Info> Patients_Info { get; set; }
+        public DbSet<PatientOld> PatientsOld { get; set; }
     }
 }

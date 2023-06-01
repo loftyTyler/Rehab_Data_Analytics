@@ -1,0 +1,76 @@
+﻿@model List<PatientOld>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Patient Info</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Patient_Info" asp-action="Index" class="btn btn-primary">
+                <i class="bi bi-arrow-return-left"></i> &nbsp; Back to Patient List
+            </a>
+        </div>
+    </div>
+    <br /><br />
+
+
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    Patient Name
+                </th>
+                <th>
+                    Knee ROM
+                </th>
+                <th>
+                    Knee Strength
+                </th>
+                <th>
+                    LB Ext Rom
+                </th>
+                <th>
+                    LB Flex Rom
+                </th>
+                <th>
+                    Pain Free Lift
+                </th>
+                <th>
+                    Date Updated
+                </th>              
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td width="25%">
+                        @obj.Name
+                    </td>
+                    <td width="10%">
+                        @obj.KneeROM
+                    </td>
+                    <td width="10%">
+                        @obj.KneeStrength
+                    </td>
+                    <td width="10%">
+                        @obj.LowerbackExtROM
+                    </td>
+                    <td width="10%">
+                        @obj.LowerBackFlexionROM
+                    </td>
+                    <td width="10%">
+                        @obj.PainFreeWeightLifted
+                    </td>
+                    <td width="25%">
+                        @obj.DateUpdated
+                    </td>                  
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
