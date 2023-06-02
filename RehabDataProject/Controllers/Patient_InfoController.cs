@@ -68,19 +68,6 @@ namespace RehabDataProject.Controllers
             }
 			return View(patientFromDb);
 		}
-        //For Old Patient LIst
-        public IActionResult IndexOldList(int? id)
-        {
-            var patientInfo = _db.Patients_Info.Find(id);
-            if (patientInfo == null)
-            {
-                return NotFound();
-            }
-            var name = patientInfo.Name;
-            var oldPatients = _db.PatientsOld.Where(p => p.Name == name).ToList();
-            return View(oldPatients);
-
-        }
         //POST
         [HttpPost]
 		[ValidateAntiForgeryToken]
@@ -105,5 +92,41 @@ namespace RehabDataProject.Controllers
 			}
 			return View(obj);
 		}
-	}
+
+        //Retrieve specific patient data
+        public IActionResult IndexOldList(int? id)
+        {
+            var patientInfo = _db.Patients_Info.Find(id);
+            if (patientInfo == null)
+            {
+                return NotFound();
+            }
+            var name = patientInfo.Name;
+            var oldPatients = _db.PatientsOld.Where(p => p.Name == name).ToList();
+            return View(oldPatients);
+
+        }
+
+        public IActionResult GraphData(string name)
+        {
+           
+            var patientData = _db.PatientsOld.Where(p => p.Name == name).ToList();
+            //New Code
+            //List<DateTime> dataList = new List<DateTime>();
+            //List<double> kneeRom = new List<double>();
+
+            //foreach ( var patient in patientData )
+            //{
+            //    dataList.Add(patient.DateUpdated);
+            //    kneeRom.Add(patient.KneeROM);
+            //}
+            
+            return View(patientData);
+            //Figure out how to get the model to the view to be graphed
+            //End of New Code
+            //return View(patientData);
+        }
+
+
+    }
 }

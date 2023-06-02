@@ -1,0 +1,45 @@
+﻿@model List<PatientOld>
+@{
+    ViewData["Title"] = "GraphData";
+}
+
+@{
+    var labels = Model.Select(p => p.DateUpdated).ToList();
+    var values = Model.Select(p => p.KneeROM).ToList();
+}
+<h1>Graph Data</h1>
+<canvas id="myChart"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Retrieve data from the model or API endpoint
+    var labels = @Html.Raw(Json.Serialize(labels));
+    var values = @Html.Raw(Json.Serialize(values));
+
+    // Create a new chart instance
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Data',
+                data: values,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            // Configure additional chart options, such as title, scales, tooltips, etc.
+        }
+    });
+</script>
+
+@*<h1>
+    @foreach(var obj in Model)
+    {
+        @obj.Name
+    }
+</h1>*@
+

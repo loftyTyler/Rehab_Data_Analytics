@@ -67,10 +67,21 @@
                     </td>
                     <td width="25%">
                         @obj.DateUpdated
-                    </td>                  
+                    </td>                   
                 </tr>
             }
         </tbody>
     </table>
 </div>
+<div class="col-7 text-end">  
+    @{
+        var userName = Model[0].Name;
+        <a asp-controller="Patient_Info" asp-action="GraphData" asp-route-name="@userName" class="btn btn-primary">
+        <i class="bi bi-graph-up"></i> &nbsp; Patient Progress Graph
+    </a>
+    }
+</div>
+
+
+
 
