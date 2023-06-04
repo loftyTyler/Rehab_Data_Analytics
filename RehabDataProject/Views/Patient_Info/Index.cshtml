@@ -6,7 +6,7 @@
 <div class="container p-3">
     <div class="row pt-4">
         <div class="col-6">
-            <h2 class="text-primary">Patient Info</h2>
+            <h2 class="text-info">Patient Info</h2>
         </div>
         <div class="col-6 text-end">
             <a asp-controller="Patient_Info" asp-action ="Create" class="btn btn-primary">
@@ -42,7 +42,7 @@
                 Date Updated
             </th>
             <th>
-
+                Actions
             </th>
         </tr>
     </thead>
@@ -50,29 +50,29 @@
         @foreach(var obj in Model)
         {
             <tr>
-                <td width="25%">
+                <td>
                     @obj.Name
                 </td>
-                <td width="10%">
+                <td>
                     @obj.KneeROM
                 </td>
-                <td width="10%">
+                <td>
                     @obj.KneeStrength
                 </td>
-                <td width="10%">
+                <td>
                     @obj.LowerbackExtROM
                 </td>
-                <td width="10%">
+                <td>
                     @obj.LowerBackFlexionROM
                 </td>
-                <td width="10%">
+                <td>
                     @obj.PainFreeWeightLifted
                 </td>
-                <td width="20%">
+                <td>
                     @obj.DateUpdated
                 </td>
                 <td>
-                    <div class="w-75 btn-group" role="group">
+                    <div class="btn-group centernav" role="group">
                             <a asp-controller="Patient_Info" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-2"><i class="bi bi-pencil-square"></i>Edit</a>
                             <a asp-controller="Patient_Info" asp-action="IndexOldList" asp-route-id="@obj.Id" class="btn btn-primary mx-2"><i class="bi bi-archive"></i>History</a>
                     </div>

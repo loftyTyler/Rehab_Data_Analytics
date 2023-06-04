@@ -6,8 +6,12 @@
 @{
     var labels = Model.Select(p => p.DateUpdated).ToList();
     var values = Model.Select(p => p.KneeROM).ToList();
+    var kneeStrengthValues = Model.Select(p => p.KneeStrength).ToList();
+    var lbExtRom = Model.Select(p => p.LowerbackExtROM).ToList();
+    var lbFlexRom = Model.Select(p => p.LowerBackFlexionROM).ToList();
+    var painFreeLift = Model.Select(p => p.PainFreeWeightLifted).ToList();
 }
-<h1>Graph Data</h1>
+<h1>Patient Graph Data</h1>
 <canvas id="myChart"></canvas>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -15,6 +19,10 @@
     // Retrieve data from the model or API endpoint
     var labels = @Html.Raw(Json.Serialize(labels));
     var values = @Html.Raw(Json.Serialize(values));
+    var kneeStrengthValue = @Html.Raw(Json.Serialize(kneeStrengthValues));
+    var lbExtValue = @Html.Raw(Json.Serialize(lbExtRom));
+    var lbFlexValue = @Html.Raw(Json.Serialize(lbFlexRom));
+    var painFreeValue = @Html.Raw(Json.Serialize(painFreeLift));
 
     // Create a new chart instance
     var ctx = document.getElementById('myChart').getContext('2d');
@@ -23,23 +31,51 @@
         data: {
             labels: labels,
             datasets: [{
-                label: 'Data',
+                label: 'Knee ROM',
                 data: values,
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
                 borderColor: 'rgba(75, 192, 192, 1)',
                 borderWidth: 1
-            }]
+            },
+            {
+                label: 'Knee Strength',
+                data: kneeStrengthValue,
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            },
+            {
+                label: 'Lower Back Ext ROM',
+                data: lbExtValue,
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            },
+            {
+                label: 'Lower Back Flex ROM',
+                data: lbFlexValue,
+                backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                borderColor: 'rgba(255, 159, 64, 1)',
+                borderWidth: 1
+            },
+            {
+                label: 'Pain Free Weight Lifted',
+                data: painFreeValue,
+                backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                borderColor: 'rgba(153, 102, 255, 1)',
+                borderWidth: 1
+            }
+            ]
         },
         options: {
             // Configure additional chart options, such as title, scales, tooltips, etc.
         }
     });
 </script>
+<div class="col-7 text-end">
+    <a asp-controller="Patient_Info" asp-action="Index" class="btn btn-primary">
+        <i class="bi bi-arrow-return-left"></i> &nbsp; Back to Patient List
+    </a>
+</div>
 
-@*<h1>
-    @foreach(var obj in Model)
-    {
-        @obj.Name
-    }
-</h1>*@
 

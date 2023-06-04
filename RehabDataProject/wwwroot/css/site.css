@@ -16,3 +16,53 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+h1 {
+    text-align: center;
+}
+
+.image-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    border: 1px solid rgb(0, 148, 255);
+    padding: 10px;
+    box-shadow: 0 0 5px rgb(0, 148, 255);
+}
+
+.image-container img {
+    max-width: 75%;
+    height: auto;
+}
+
+.image-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.image-description h2 {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.image-description p {
+    font-size: 25px;
+}
+
+.centernav {
+    display: flex;
+    justify-content: center;
+}
+
+.tablecolor {
+    border: 1px solid rgb(0, 148, 255);
+    padding: 10px;
+    box-shadow: 0 0 5px rgb(0, 148, 255);
+    display: block;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}

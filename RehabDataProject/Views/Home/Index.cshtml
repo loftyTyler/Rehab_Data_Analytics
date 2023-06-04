@@ -3,6 +3,84 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>This project will showcase my use of ASP.Net to create a project to be used as a rehab data tracking web-app.</p>
+    <h1 class="display-4 text-info">Welcome to my Rehab Data Tracking Project!</h1>
+    <h5>This project will showcase my use of ASP.Net to create a project to be used as a rehab data tracking web-app.</h5>
+    <h5>Here are all the things you can do within this website</h5>
+    <br />
 </div>
+
+
+<ul class="nav nav-tabs centernav" role="tablist">
+    <li class="nav-item" role="presentation">
+        <a class="nav-link" data-bs-toggle="tab" href="#home" aria-selected="false" role="tab">Patient List</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link" data-bs-toggle="tab" href="#newpatient" aria-selected="false" role="tab">Add New Patient</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link " data-bs-toggle="tab" href="#patientfile" aria-selected="false" role="tab">Update Patient File</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link " data-bs-toggle="tab" href="#patienthistory" aria-selected="false" role="tab">Patient History</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link " data-bs-toggle="tab" href="#patientgraph" aria-selected="false" role="tab">Patient Data Graph</a>
+    </li>
+    
+</ul>
+<br />
+<div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade active show" id="home" role="tabpanel">
+        <div class="image-container">
+            <img src="/images/patientList.JPG" alt="Patient List" />
+            <div class="image-description">
+                <h2>Patient Data</h2>
+                <p>This will display all avaiable patients, stored in the database table.</p>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="newpatient" role="tabpanel">
+        <div class="image-container">
+            <img src="/images/addNewPatient.JPG" alt="Add New Patient" />
+            <div class="image-description">
+                <h2>Add New Patient</h2>
+                <p>This will allow you to create a new patient and add them to the database.</p>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="patientfile" role="tabpanel">
+        <div class="image-container">
+            <img src="/images/updatePatientFile.JPG" alt="Update Patient File" />
+            <div class="image-description">
+                <h2>Update Patient File</h2>
+                <p>This will allow you to update a patients file with changes.</p>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="patienthistory" role="tabpanel">
+        <div class="image-container">
+            <img src="/images/patientHistoryList.JPG" alt="Patient History" />
+            <div class="image-description">
+                <h2>Patient History</h2>
+                <p>This will display the history of the patients metrics.</p>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="patientgraph" role="tabpanel">
+        <div class="image-container">
+            <img src="/images/patientDataGraph.JPG" alt="Patient Data Graph" />
+            <div class="image-description">
+                <h2>Patient Data Graph</h2>
+                <p>This will graph the history of the patient data to show changes over time.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="text-center d-grid gap-2">
+<a asp-controller="Patient_Info" asp-action="Index" class="btn btn-lg btn-primary">
+    <i class="bi bi-database"></i> &nbsp; Click to View Patient List
+</a>
+</div>
+   
+
