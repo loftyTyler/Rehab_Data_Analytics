@@ -49,6 +49,7 @@ namespace RehabDataProject.Controllers
                 _db.PatientsOld.Add(patientOld);
                 _db.Patients_Info.Add(obj);
                 _db.SaveChanges();
+                TempData["success"] = "Patient Created Successfully";
                 return RedirectToAction("Index");
             }
             return View(obj);
@@ -88,6 +89,7 @@ namespace RehabDataProject.Controllers
                 _db.PatientsOld.Add(patientOld);
 				_db.Patients_Info.Update(obj);               
 				_db.SaveChanges();
+                TempData["success"] = "Patient Updated Successfully";
 				return RedirectToAction("Index");
 			}
 			return View(obj);
